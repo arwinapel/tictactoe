@@ -6,7 +6,7 @@ $(document).ready(function() {
 	$('#game li').click(function() {
 		let $this = $(this)
 		if(!flagWin) {
-			if(count == 9) {
+			if(count >= 8) {
 				alert('Its a tie. It will restart.')
 				reset()
 			} else {
@@ -23,6 +23,7 @@ $(document).ready(function() {
 							$("#o_win").text(o_win)
 						}
 						flagWin = true
+						reset()
 					} else {
 						setNextPlayer();
 					}
@@ -81,10 +82,14 @@ $(document).ready(function() {
 		$("#game li").removeClass('btn-primary')
 		$("#game li").removeClass('btn-info')
 		count = 0
+		flagWin = false
+		player = "o"
 	}
 	
 	$("#reset").click(function () {
 		reset()
+		x_win = 0
+		o_win = 0
 		$("#x_win").text(0)
 		$("#o_win").text(0)
   });
